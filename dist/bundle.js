@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/components/header.js":
+/*!**********************************!*\
+  !*** ./src/components/header.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ header)\n/* harmony export */ });\nfunction header() {\r\n  const headerContainer = document.createElement(\"header\");\r\n\r\n  return headerContainer;\r\n}\r\n\n\n//# sourceURL=webpack://odin-todo-list/./src/components/header.js?");
+
+/***/ }),
+
+/***/ "./src/components/sidebar.js":
+/*!***********************************!*\
+  !*** ./src/components/sidebar.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ sideBar)\n/* harmony export */ });\nfunction sideBar() {\r\n  const sideBarContainer = document.createElement(\"div\");\r\n  sideBarContainer.className = `side-bar-container`;\r\n\r\n  return sideBarContainer;\r\n}\r\n\n\n//# sourceURL=webpack://odin-todo-list/./src/components/sidebar.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.css */ \"./src/main.css\");\n\r\n\n\n//# sourceURL=webpack://odin-todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.css */ \"./src/main.css\");\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n/* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/sidebar */ \"./src/components/sidebar.js\");\n\r\n\r\n\r\n\r\n(function initiate() {\r\n  const root = document.getElementById(`root`);\r\n\r\n  root.appendChild((0,_components_header__WEBPACK_IMPORTED_MODULE_1__[\"default\"])());\r\n  root.appendChild((0,_components_sidebar__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\r\n})();\r\n\n\n//# sourceURL=webpack://odin-todo-list/./src/index.js?");
 
 /***/ })
 
