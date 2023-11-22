@@ -6,12 +6,13 @@
 
 #root {
   display: grid;
-  grid-template-columns: 200px 1fr;
+
+  grid-template-columns: 1fr;
   grid-template-rows: 100px 1fr 100px;
   grid-template-areas:
-    "sidebar header"
-    "sidebar main"
-    "sidebar footer";
+    "header"
+    "main"
+    "footer";
   max-width: 1250px;
   min-height: 100svh;
   margin: 0 auto;
@@ -27,18 +28,34 @@ header {
   border: 1px solid red;
 }
 
+#main {
+  grid-area: main;
+  border: 1px solid green;
+}
+
 footer {
   grid-area: footer;
   border: 1px solid blue;
 }
 
-@media only screen and (max-width: 728px) {
+.task-form {
+  position: absolute;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 600px;
+
+  background-color: orange;
+}
+
+@media only screen and (min-width: 728px) {
   #root {
-    grid-template-columns: 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-rows: 100px 1fr 100px;
     grid-template-areas:
-      "header"
-      "main"
-      "footer";
+      "sidebar header"
+      "sidebar main"
+      "sidebar footer";
   }
 }
