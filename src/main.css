@@ -6,7 +6,7 @@
 
 #root {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 100px 1fr 100px;
   grid-template-areas:
     "sidebar header"
@@ -30,4 +30,15 @@ header {
 footer {
   grid-area: footer;
   border: 1px solid blue;
+}
+
+@media only screen and (max-width: 728px) {
+  #root {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-areas:
+      "header"
+      " main"
+      " footer";
+  }
 }
