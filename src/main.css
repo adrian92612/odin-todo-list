@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+    "sidebar footer";
+  max-width: 1250px;
+  min-height: 100svh;
+  margin: 0 auto;
+}
+
+header {
+  grid-area: header;
+  border: 1px solid black;
+}
+
+.sidebar-container {
+  grid-area: sidebar;
+  border: 1px solid red;
+}
+
+footer {
+  grid-area: footer;
+  border: 1px solid blue;
+}
