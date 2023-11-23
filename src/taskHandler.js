@@ -1,6 +1,8 @@
 import render from "./domManipulator";
 
 let mainTaskArray = [];
+let subTaskArray = [];
+let projectArray = [];
 
 class Task {
   constructor(title, details, projectName) {

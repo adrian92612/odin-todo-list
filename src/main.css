@@ -28,6 +28,12 @@ header {
   border: 1px solid red;
 }
 
+.nav-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #main {
   grid-area: main;
   border: 1px solid green;
