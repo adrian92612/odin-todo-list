@@ -38,15 +38,25 @@ footer {
   border: 1px solid blue;
 }
 
-.task-form {
+#task-form {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 60%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 600px;
 
   background-color: orange;
+}
+
+#task-form input {
+  padding: 0.5rem;
+}
+
+#details {
+  padding: 1rem;
+  min-height: 200px;
 }
 
 @media only screen and (min-width: 728px) {

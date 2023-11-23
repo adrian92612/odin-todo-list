@@ -8,7 +8,12 @@
   <body>
     <div id="root">
       <header></header>
-      <div class="task-form"></div>
+      <form id="task-form" action="#">
+        <input type="text" id="title" placeholder="Title" />
+        <textarea name="textarea" id="details" cols="20" rows="5"></textarea>
+        <input type="text" id="projectName" placeholder="Project Name" />
+        <button type="submit">Add Task</button>
+      </form>
       <nav class="side-bar"></nav>
       <div id="main"></div>
       <footer></footer>
