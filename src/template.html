@@ -10,17 +10,18 @@
       <header>
         <div class="current-tab"></div>
       </header>
+
       <form id="task-form" action="#">
         <input type="text" id="title" placeholder="Title" />
         <textarea name="textarea" id="details" cols="20" rows="5"></textarea>
-        <input type="text" id="projectName" placeholder="Project Name" />
         <button type="submit">Add Task</button>
       </form>
+
       <nav class="side-bar">
         <div class="nav-options">
           <button class="btn-all">All</button>
           <button class="btn-today">Today</button>
-          <button class="btn-upcomingWeek">Upcoming Week</button>
+          <button class="btn-nextSeven">Next 7 Days</button>
         </div>
         <div class="proj-names">
           <h4>Projects</h4>
@@ -31,7 +32,9 @@
         </form>
         <div class="project-list"></div>
       </nav>
+
       <div id="main"></div>
+
       <footer></footer>
     </div>
   </body>

@@ -26,6 +26,7 @@ header {
 .side-bar {
   grid-area: sidebar;
   border: 1px solid red;
+  display: none;
 }
 
 .nav-options {
@@ -73,5 +74,8 @@ footer {
       "sidebar header"
       "sidebar main"
       "sidebar footer";
+  }
+  .side-bar {
+    display: block;
   }
 }
