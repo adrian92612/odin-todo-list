@@ -2,7 +2,6 @@ import render from "./domManipulator";
 
 let mainTaskArray = [];
 let subTaskArray = [];
-let projectArray = [];
 
 class Task {
   constructor(title, details, projectName) {
@@ -29,4 +28,5 @@ export default function addTask(e) {
   const task = new Task(title.value, details.value, projectName.value);
   mainTaskArray.push(task);
   render(mainTaskArray);
+  e.target.reset();
 }
