@@ -7,7 +7,9 @@
   <script defer src="bundle.js"></script></head>
   <body>
     <div id="root">
-      <header></header>
+      <header>
+        <div class="current-tab"></div>
+      </header>
       <form id="task-form" action="#">
         <input type="text" id="title" placeholder="Title" />
         <textarea name="textarea" id="details" cols="20" rows="5"></textarea>
@@ -20,12 +22,14 @@
           <button class="btn-today">Today</button>
           <button class="btn-upcomingWeek">Upcoming Week</button>
         </div>
-        <div class="add-project">
-          <input type="text" id="add-new-project" placeholder="New Project" />
-        </div>
         <div class="proj-names">
           <h4>Projects</h4>
         </div>
+        <form action="#" id="add-project">
+          <input type="text" id="add-new-project" placeholder="New Project" />
+          <button id="add-project-btn">add</button>
+        </form>
+        <div class="project-list"></div>
       </nav>
       <div id="main"></div>
       <footer></footer>
