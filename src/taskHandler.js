@@ -7,6 +7,7 @@ class Task {
     this.title = title;
     this.details = details;
     this.projectName;
+    this.mainIndex;
   }
 
   setTitle(newTitle) {
@@ -20,38 +21,29 @@ class Task {
   setProjectName(newProjectName) {
     this.projectName = newProjectName;
   }
+
+  setMainIndex(newIndex) {
+    this.mainIndex = newIndex;
+  }
 }
 
-const createSubTaskArray = (projectName) => {
-  const subTaskArray = [];
-  mainTaskArray.forEach((e) => {
-    if (e.projectName == projectName) {
-      subTaskArray.push(e);
-    }
-  });
-
-  return subTaskArray;
+const tabSwitch = () => {
+  render(mainTaskArray);
 };
 
-const tabSwitch = (tab) => {
-  if (tab == "All") {
-    render(mainTaskArray);
-    return;
+const setTaskProjectName = (task) => {
+  const currentTab = document.querySelector(".current-tab").innerText;
+  if (currentTab != "All") {
+    task.setProjectName(currentTab);
   }
-  render(createSubTaskArray(tab));
 };
 
 export default function addTask(e) {
   e.preventDefault();
   const task = new Task(title.value, details.value);
   mainTaskArray.push(task);
-  const currentTab = document.querySelector(".current-tab");
-  if (currentTab.innerText != "All") {
-    task.setProjectName(currentTab.innerText);
-    render(createSubTaskArray(currentTab.innerText));
-    e.target.reset();
-    return;
-  }
+
+  setTaskProjectName(task);
   render(mainTaskArray);
   e.target.reset();
 }

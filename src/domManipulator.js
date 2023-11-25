@@ -3,8 +3,7 @@ import { tabSwitch } from "./taskHandler";
 const setCurrentTab = (tab) => {
   const currentTab = document.querySelector(".current-tab");
   currentTab.innerText = tab;
-  console.log(currentTab.innerText);
-  tabSwitch(currentTab.innerText);
+  tabSwitch();
 };
 
 function addProjectName(e) {
@@ -37,7 +36,28 @@ const toggleTaskForm = () => {
 export default function render(taskArray) {
   const main = document.querySelector("#main");
   main.innerHTML = "";
-  taskArray.forEach((task, i) => {
+
+  const filterTaskArray = (tasks) => {
+    const tab = document.querySelector(".current-tab").innerText;
+    console.log("use");
+    let filteredTask = [];
+    switch (tab) {
+      case "All":
+        filteredTask = tasks;
+        break;
+      default:
+        tasks.forEach((task) => {
+          if (task.projectName == tab) {
+            filteredTask.push(task);
+          }
+        });
+    }
+
+    return filteredTask;
+  };
+
+  const filteredTask = filterTaskArray(taskArray);
+  filteredTask.forEach((task, i) => {
     const taskContainer = document.createElement("div");
     taskContainer.innerText = `${task.title} -- ${task.details}`;
     taskContainer.setAttribute("data-index", `${i}`);
