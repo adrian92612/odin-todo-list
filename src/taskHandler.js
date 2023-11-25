@@ -40,6 +40,7 @@ const setTaskProjectName = (task) => {
 
 export default function addTask(e) {
   e.preventDefault();
+  console.log(e);
   const task = new Task(title.value, details.value);
   mainTaskArray.push(task);
 

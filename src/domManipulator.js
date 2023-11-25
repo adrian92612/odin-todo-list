@@ -28,6 +28,7 @@ const toggleTaskForm = () => {
   const taskForm = document.querySelector("#task-form");
   if (taskForm.hasAttribute("style")) {
     taskForm.removeAttribute("style");
+    title.focus();
     return;
   }
   taskForm.setAttribute("style", "display:none");
@@ -37,27 +38,23 @@ export default function render(taskArray) {
   const main = document.querySelector("#main");
   main.innerHTML = "";
 
-  const filterTaskArray = (tasks) => {
+  const filterTaskArray = () => {
     const tab = document.querySelector(".current-tab").innerText;
-    console.log("use");
     let filteredTask = [];
     switch (tab) {
       case "All":
-        filteredTask = tasks;
+        filteredTask = taskArray;
         break;
       default:
-        tasks.forEach((task) => {
-          if (task.projectName == tab) {
-            filteredTask.push(task);
-          }
+        filteredTask = taskArray.filter((task) => {
+          return task.projectName == tab;
         });
     }
 
     return filteredTask;
   };
 
-  const filteredTask = filterTaskArray(taskArray);
-  filteredTask.forEach((task, i) => {
+  filterTaskArray().forEach((task, i) => {
     const taskContainer = document.createElement("div");
     taskContainer.innerText = `${task.title} -- ${task.details}`;
     taskContainer.setAttribute("data-index", `${i}`);
