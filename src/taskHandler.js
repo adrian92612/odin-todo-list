@@ -4,10 +4,10 @@ let mainTaskArray = [];
 let subTaskArray = [];
 
 class Task {
-  constructor(title, details, projectName) {
+  constructor(title, details) {
     this.title = title;
     this.details = details;
-    this.projectName = projectName;
+    this.projectName;
   }
 
   setTitle(newTitle) {
@@ -25,7 +25,7 @@ class Task {
 
 export default function addTask(e) {
   e.preventDefault();
-  const task = new Task(title.value, details.value, projectName.value);
+  const task = new Task(title.value, details.value);
   mainTaskArray.push(task);
   render(mainTaskArray);
   e.target.reset();

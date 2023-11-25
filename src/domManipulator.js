@@ -16,6 +16,15 @@ function addProjectName(e) {
   e.target.reset();
 }
 
+const toggleTaskForm = () => {
+  const taskForm = document.querySelector("#task-form");
+  if (taskForm.hasAttribute("style")) {
+    taskForm.removeAttribute("style");
+    return;
+  }
+  taskForm.setAttribute("style", "display:none");
+};
+
 export default function render(taskArray) {
   const main = document.querySelector("#main");
   main.innerHTML = "";
@@ -27,4 +36,4 @@ export default function render(taskArray) {
   });
 }
 
-export { addProjectName, setCurrentTab };
+export { addProjectName, setCurrentTab, toggleTaskForm };

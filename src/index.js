@@ -1,6 +1,10 @@
 import "./main.css";
 import addTask from "./taskHandler";
-import { addProjectName, setCurrentTab } from "./domManipulator";
+import {
+  addProjectName,
+  setCurrentTab,
+  toggleTaskForm,
+} from "./domManipulator";
 
 const taskFormListener = () => {
   const taskForm = document.getElementById("task-form");
@@ -34,8 +38,16 @@ const tabListener = () => {
   });
 };
 
+const addTaskListener = () => {
+  const addTaskBtn = document.querySelector(".add-task");
+  addTaskBtn.addEventListener("click", () => {
+    toggleTaskForm();
+  });
+};
+
 (function init() {
   taskFormListener();
   addProjectListener();
   tabListener();
+  addTaskListener();
 })();
