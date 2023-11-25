@@ -1,6 +1,10 @@
+import { tabSwitch } from "./taskHandler";
+
 const setCurrentTab = (tab) => {
   const currentTab = document.querySelector(".current-tab");
   currentTab.innerText = tab;
+  console.log(currentTab.innerText);
+  tabSwitch(currentTab.innerText);
 };
 
 function addProjectName(e) {
