@@ -3,10 +3,10 @@ import render from "./domManipulator";
 const mainTaskArray = [];
 
 class Task {
-  constructor(title, details) {
+  constructor(projectName, title, details) {
+    this.projectName = projectName;
     this.title = title;
     this.details = details;
-    this.projectName;
     this.mainIndex;
   }
 
@@ -33,14 +33,9 @@ const tabSwitch = () => {
 
 export default function addTask(e) {
   e.preventDefault();
-  const task = new Task(title.value, details.value);
+  const projName = document.querySelector("#project-name").innerText;
+  const task = new Task(projName, title.value, details.value);
   mainTaskArray.push(task);
-
-  const currentTab = document.querySelector(".current-tab").innerText;
-  if (currentTab != "All") {
-    task.setProjectName(currentTab);
-  }
-
   render(mainTaskArray);
   e.target.reset();
 }

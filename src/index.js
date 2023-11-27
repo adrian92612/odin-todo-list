@@ -35,10 +35,18 @@ const tabListener = () => {
   });
 };
 
+const fromProjectsListner = () => {
+  const formProjectOptions = document.querySelector("#project-name");
+  formProjectOptions.addEventListener("click", () => {
+    toggleElement(document.querySelector(".project-options"));
+  });
+};
+
 const addTaskListener = () => {
   const addTaskBtn = document.querySelector(".add-task");
   const title = document.querySelector("#title");
   addTaskBtn.addEventListener("click", () => {
+    title.focus();
     toggleElement(document.querySelector(".task-form"));
   });
 };
@@ -48,4 +56,5 @@ const addTaskListener = () => {
   addProjectListener();
   tabListener();
   addTaskListener();
+  fromProjectsListner();
 })();
