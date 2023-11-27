@@ -46,7 +46,9 @@ const addTaskListener = () => {
   const addTaskBtn = document.querySelector(".add-task");
   const title = document.querySelector("#title");
   addTaskBtn.addEventListener("click", () => {
-    title.focus();
+    setTimeout(() => {
+      title.focus();
+    }, 10);
     toggleElement(document.querySelector(".task-form"));
   });
 };
