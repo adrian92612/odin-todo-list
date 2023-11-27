@@ -31,20 +31,16 @@ const tabSwitch = () => {
   render(mainTaskArray);
 };
 
-const setTaskProjectName = (task) => {
+export default function addTask(e) {
+  e.preventDefault();
+  const task = new Task(title.value, details.value);
+  mainTaskArray.push(task);
+
   const currentTab = document.querySelector(".current-tab").innerText;
   if (currentTab != "All") {
     task.setProjectName(currentTab);
   }
-};
 
-export default function addTask(e) {
-  e.preventDefault();
-  console.log(e);
-  const task = new Task(title.value, details.value);
-  mainTaskArray.push(task);
-
-  setTaskProjectName(task);
   render(mainTaskArray);
   e.target.reset();
 }

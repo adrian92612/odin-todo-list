@@ -1,16 +1,12 @@
 import "./main.css";
 import addTask from "./taskHandler";
-import {
-  addProjectName,
-  setCurrentTab,
-  toggleTaskForm,
-} from "./domManipulator";
+import { addProjectName, setCurrentTab, toggleElement } from "./domManipulator";
 
 const taskFormListener = () => {
-  const taskForm = document.getElementById("task-form");
+  const taskForm = document.querySelector(".task-form");
   taskForm.addEventListener("submit", (e) => {
     addTask(e);
-    toggleTaskForm();
+    toggleElement(taskForm);
   });
 };
 
@@ -33,7 +29,7 @@ const tabListener = () => {
     setCurrentTab(today.innerText);
   });
 
-  const nextSeven = document.querySelector(".btn-nextSeven");
+  const nextSeven = document.querySelector(".btn-upcoming");
   nextSeven.addEventListener("click", () => {
     setCurrentTab(nextSeven.innerText);
   });
@@ -41,8 +37,9 @@ const tabListener = () => {
 
 const addTaskListener = () => {
   const addTaskBtn = document.querySelector(".add-task");
+  const title = document.querySelector("#title");
   addTaskBtn.addEventListener("click", () => {
-    toggleTaskForm();
+    toggleElement(document.querySelector(".task-form"));
   });
 };
 

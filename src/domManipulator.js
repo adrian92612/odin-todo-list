@@ -24,37 +24,34 @@ function addProjectName(e) {
   e.target.reset();
 }
 
-const toggleTaskForm = () => {
-  const taskForm = document.querySelector("#task-form");
-  if (taskForm.hasAttribute("style")) {
-    taskForm.removeAttribute("style");
-    title.focus();
+const toggleElement = (element) => {
+  if (element.classList.contains("hide-element")) {
+    element.classList.remove("hide-element");
+    if (element.classList.contains("task-form")) {
+      title.focus();
+    }
     return;
   }
-  taskForm.setAttribute("style", "display:none");
+  element.classList.add("hide-element");
 };
 
 export default function render(taskArray) {
-  const main = document.querySelector("#main");
+  const main = document.querySelector(".main");
   main.innerHTML = "";
 
-  const filterTaskArray = () => {
-    const tab = document.querySelector(".current-tab").innerText;
-    let filteredTask = [];
-    switch (tab) {
-      case "All":
-        filteredTask = taskArray;
-        break;
-      default:
-        filteredTask = taskArray.filter((task) => {
-          return task.projectName == tab;
-        });
-    }
+  const tab = document.querySelector(".current-tab").innerText;
+  let filteredTask = [];
+  switch (tab) {
+    case "All":
+      filteredTask = taskArray;
+      break;
+    default:
+      filteredTask = taskArray.filter((task) => {
+        return task.projectName == tab;
+      });
+  }
 
-    return filteredTask;
-  };
-
-  filterTaskArray().forEach((task, i) => {
+  filteredTask.forEach((task, i) => {
     const taskContainer = document.createElement("div");
     taskContainer.innerText = `${task.title} -- ${task.details}`;
     taskContainer.setAttribute("data-index", `${i}`);
@@ -62,4 +59,4 @@ export default function render(taskArray) {
   });
 }
 
-export { addProjectName, setCurrentTab, toggleTaskForm };
+export { addProjectName, setCurrentTab, toggleElement };

@@ -10,19 +10,24 @@
       <header>
         <div class="current-tab"></div>
         <button class="add-task">Create a task</button>
-      </header>
 
-      <form id="task-form" action="#" style="display: none">
-        <input type="text" id="title" placeholder="Title" required />
-        <textarea name="textarea" id="details" cols="20" rows="5"></textarea>
-        <button type="submit">Add Task</button>
-      </form>
+        <form action="#" class="task-form hide-element">
+          <div class="project-option-wrapper">
+            <button type="button">Select a Project</button>
+            <div class="project-options"></div>
+          </div>
+          <input type="text" id="title" placeholder="Title" required />
+          <textarea name="textarea" id="details" cols="20" rows="5"></textarea>
+          <input type="date" id="date" />
+          <button type="submit">Add Task</button>
+        </form>
+      </header>
 
       <nav class="side-bar">
         <div class="nav-options">
           <button class="btn-all">All</button>
           <button class="btn-today">Today</button>
-          <button class="btn-nextSeven">Next 7 Days</button>
+          <button class="btn-upcoming">Upcoming</button>
         </div>
         <div class="proj-names">
           <h4>Projects</h4>
@@ -34,7 +39,7 @@
         <div class="project-list"></div>
       </nav>
 
-      <div id="main"></div>
+      <div class="main"></div>
 
       <footer></footer>
     </div>
