@@ -66,10 +66,24 @@ export default function render(taskArray) {
   main.innerHTML = "";
 
   const tab = document.querySelector(".current-tab").innerText;
+  const today = new Date().toJSON().slice(0, 10);
   let filteredTask = [];
   switch (tab) {
     case "All":
       filteredTask = taskArray;
+      break;
+    case "Today":
+      filteredTask = taskArray.filter((task) => {
+        return task.dueDate == today;
+      });
+      break;
+    case "Upcoming":
+      const upcoming = new Date(today);
+      upcoming.setDate(upcoming.getDate() + 7);
+      const upcomingDate = upcoming.toJSON().slice(0, 10);
+      filteredTask = taskArray.filter((task) => {
+        return task.dueDate > today && task.dueDate <= upcomingDate;
+      });
       break;
     default:
       filteredTask = taskArray.filter((task) => {
