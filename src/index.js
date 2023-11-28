@@ -17,21 +17,13 @@ const addProjectListener = () => {
 };
 
 const tabListener = () => {
-  const all = document.querySelector(".btn-all");
-  all.addEventListener("click", () => {
-    setCurrentTab(all.innerText);
+  const navTabOptions = document.querySelector(".nav-options").children;
+  Array.from(navTabOptions).forEach((tab) => {
+    tab.addEventListener("click", () => {
+      setCurrentTab(tab);
+    });
   });
-  all.click();
-
-  const today = document.querySelector(".btn-today");
-  today.addEventListener("click", () => {
-    setCurrentTab(today.innerText);
-  });
-
-  const nextSeven = document.querySelector(".btn-upcoming");
-  nextSeven.addEventListener("click", () => {
-    setCurrentTab(nextSeven.innerText);
-  });
+  navTabOptions[1].click();
 };
 
 const fromProjectsListner = () => {

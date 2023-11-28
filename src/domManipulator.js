@@ -1,8 +1,10 @@
 import { tabSwitch } from "./taskHandler";
 
-const setCurrentTab = (tab) => {
+const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
-  currentTab.innerText = tab;
+  currentTab.innerText = element.innerText;
+  document.querySelector(".active-tab")?.classList.remove("active-tab");
+  element.classList.add("active-tab");
   tabSwitch();
 };
 
@@ -42,7 +44,7 @@ function addProjectName(e) {
 
   // Add tab switching
   newProjectName.addEventListener("click", () => {
-    setCurrentTab(newProjectName.innerText);
+    setCurrentTab(newProjectName);
   });
 
   projectList.appendChild(newProjectName);

@@ -73,14 +73,37 @@ header {
 
 .side-bar {
   grid-area: sidebar;
-  border: 1px solid red;
+  border: 1px solid black;
   display: none;
+  padding: 2rem 0.5rem;
+  gap: 0.5rem;
 }
 
 .nav-options {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-tab {
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  font-weight: bolder;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.nav-options button:hover {
+  border-bottom: 3px solid black;
+}
+
+.active-tab {
+  border-bottom: 3px solid red;
 }
 
 .project-list {
@@ -140,7 +163,8 @@ footer {
       "sidebar footer";
   }
   .side-bar {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 
