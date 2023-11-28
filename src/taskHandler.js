@@ -35,6 +35,11 @@ export default function addTask(e) {
   e.preventDefault();
   const projName = document.querySelector("#project-name").innerText;
   const task = new Task(projName, title.value, details.value);
+
+  if (projName == `Select a Project`) {
+    alert(`select project name`);
+    return;
+  }
   mainTaskArray.push(task);
   render(mainTaskArray);
   e.target.reset();

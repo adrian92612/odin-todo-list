@@ -75,6 +75,8 @@ footer {
   position: relative;
 }
 .project-options {
+  position: absolute;
+  background-color: white;
   max-height: 100px;
   overflow-y: scroll;
 }
@@ -85,6 +87,14 @@ footer {
 ::-webkit-scrollbar-thumb {
   background: blue;
   border-radius: 10px;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 #details {

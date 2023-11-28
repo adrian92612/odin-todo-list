@@ -9,7 +9,14 @@ const setCurrentTab = (tab) => {
 function addProjectNameOptions(name) {
   const projName = document.createElement("div");
   projName.innerText = name;
-  document.querySelector(".project-options").appendChild(projName);
+  const projNameContainer = document.querySelector(".project-options");
+  projNameContainer.appendChild(projName);
+
+  projName.addEventListener("click", () => {
+    const selectedProjName = document.querySelector("#project-name");
+    selectedProjName.innerText = name;
+    toggleElement(projNameContainer);
+  });
 }
 
 function addProjectName(e) {
@@ -49,6 +56,9 @@ const toggleElement = (element) => {
     return;
   }
   element.classList.add("hide-element");
+  if (element == document.querySelector(".task-form")) {
+    document.querySelector("#project-name").innerText = `Select a Project`;
+  }
 };
 
 export default function render(taskArray) {
