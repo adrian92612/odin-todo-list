@@ -1,4 +1,4 @@
-import { tabSwitch } from "./taskHandler";
+import { getLocalDate, tabSwitch } from "./taskHandler";
 
 const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
@@ -68,7 +68,6 @@ export default function render(taskArray) {
   main.innerHTML = "";
 
   const tab = document.querySelector(".current-tab").innerText;
-  const today = new Date().toJSON().slice(0, 10);
   let filteredTask = [];
   switch (tab) {
     case "All":
@@ -76,15 +75,15 @@ export default function render(taskArray) {
       break;
     case "Today":
       filteredTask = taskArray.filter((task) => {
-        return task.dueDate == today;
+        return task.dueDate == getLocalDate().today();
       });
       break;
     case "Upcoming":
-      const upcoming = new Date(today);
-      upcoming.setDate(upcoming.getDate() + 7);
-      const upcomingDate = upcoming.toJSON().slice(0, 10);
       filteredTask = taskArray.filter((task) => {
-        return task.dueDate > today && task.dueDate <= upcomingDate;
+        return (
+          task.dueDate > getLocalDate().today() &&
+          task.dueDate <= getLocalDate().upcoming(7)
+        );
       });
       break;
     default:
@@ -95,7 +94,7 @@ export default function render(taskArray) {
 
   filteredTask.forEach((task, i) => {
     const taskContainer = document.createElement("div");
-    taskContainer.innerText = `${task.title} -- ${task.details}`;
+    taskContainer.innerText = `${task.title} -- ${task.details} -- ${task.dueDate}`;
     taskContainer.setAttribute("data-index", `${i}`);
     main.appendChild(taskContainer);
   });

@@ -26,7 +26,7 @@ const tabListener = () => {
   navTabOptions[1].click();
 };
 
-const fromProjectsListner = () => {
+const formProjectsListner = () => {
   const formProjectOptions = document.querySelector("#project-name");
   formProjectOptions.addEventListener("click", () => {
     toggleElement(document.querySelector(".project-options"));
@@ -50,5 +50,5 @@ const addTaskListener = () => {
   addProjectListener();
   tabListener();
   addTaskListener();
-  fromProjectsListner();
+  formProjectsListner();
 })();

@@ -36,7 +36,19 @@ const tabSwitch = () => {
   render(mainTaskArray);
 };
 
-const checkUpcomingTasks = (taskDate) => {};
+const getLocalDate = () => {
+  function today() {
+    const date = new Date();
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  }
+  function upcoming(days) {
+    const upcoming = new Date(today());
+    upcoming.setDate(upcoming.getDate() + days);
+    return upcoming.toJSON().slice(0, 10);
+  }
+
+  return { today, upcoming };
+};
 
 export default function addTask(e) {
   e.preventDefault();
@@ -50,11 +62,10 @@ export default function addTask(e) {
     return;
   }
 
-  console.log("wow");
   toggleElement(e.target);
   mainTaskArray.push(task);
   render(mainTaskArray);
   e.target.reset();
 }
 
-export { tabSwitch };
+export { tabSwitch, getLocalDate };
