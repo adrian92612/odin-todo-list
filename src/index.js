@@ -6,7 +6,6 @@ const taskFormListener = () => {
   const taskForm = document.querySelector(".task-form");
   taskForm.addEventListener("submit", (e) => {
     addTask(e);
-    toggleElement(taskForm);
   });
 };
 
@@ -60,8 +59,4 @@ const addTaskListener = () => {
   tabListener();
   addTaskListener();
   fromProjectsListner();
-
-  // const today = new Date().toJSON().slice(0, 10);
-  // const upcoming = new Date(today);
-  // upcoming.setDate(upcoming.getDate() + 7);
 })();

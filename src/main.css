@@ -18,32 +18,12 @@
   margin: 0 auto;
 }
 
+/********** HEADER **********/
+
 header {
   position: relative;
   grid-area: header;
   border: 1px solid black;
-}
-
-.side-bar {
-  grid-area: sidebar;
-  border: 1px solid red;
-  display: none;
-}
-
-.nav-options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#main {
-  grid-area: main;
-  border: 1px solid green;
-}
-
-footer {
-  grid-area: footer;
-  border: 1px solid blue;
 }
 
 .task-form {
@@ -64,6 +44,11 @@ footer {
   border: 1px solid black;
 }
 
+#details {
+  padding: 1rem;
+  min-height: 200px;
+}
+
 .project-option-wrapper,
 .project-option-wrapper button,
 .project-option-wrapper div {
@@ -74,19 +59,28 @@ footer {
 .project-option-wrapper {
   position: relative;
 }
+
 .project-options {
   position: absolute;
   background-color: white;
   max-height: 100px;
   overflow-y: scroll;
 }
-::-webkit-scrollbar {
-  width: 5px;
+
+/* ******************* */
+
+/********** SIDEBAR **********/
+
+.side-bar {
+  grid-area: sidebar;
+  border: 1px solid red;
+  display: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: blue;
-  border-radius: 10px;
+.nav-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-list {
@@ -97,14 +91,44 @@ footer {
   overflow-y: scroll;
 }
 
-#details {
-  padding: 1rem;
-  min-height: 200px;
+/* ******************* */
+
+/********** MAIN **********/
+
+#main {
+  grid-area: main;
+  border: 1px solid green;
+}
+
+/* ******************* */
+
+/********** FOOTER **********/
+
+footer {
+  grid-area: footer;
+  border: 1px solid blue;
+}
+
+/* ******************* */
+
+/********** OTHERS **********/
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
 }
 
 .hide-element {
   display: none;
 }
+
+/* ******************* */
+
+/********** MEDIA QUERIES **********/
 
 @media only screen and (min-width: 728px) {
   #root {
@@ -119,3 +143,5 @@ footer {
     display: block;
   }
 }
+
+/* ******************* */

@@ -1,4 +1,5 @@
 import render from "./domManipulator";
+import { toggleElement } from "./domManipulator";
 
 const mainTaskArray = [];
 
@@ -45,9 +46,12 @@ export default function addTask(e) {
   const task = new Task(projName, title.value, details.value, date);
 
   if (projName == `Select a Project`) {
-    alert(`select project name`);
+    console.log(`select project name`);
     return;
   }
+
+  console.log("wow");
+  toggleElement(e.target);
   mainTaskArray.push(task);
   render(mainTaskArray);
   e.target.reset();
