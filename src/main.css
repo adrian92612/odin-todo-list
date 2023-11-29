@@ -63,7 +63,7 @@ header {
 .project-options {
   position: absolute;
   background-color: white;
-  max-height: 100px;
+  height: 100px;
   overflow-y: scroll;
 }
 
@@ -118,9 +118,15 @@ header {
 
 /********** MAIN **********/
 
-#main {
+.main {
   grid-area: main;
   border: 1px solid green;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.task-cards {
+  flex: 1 1 200px;
 }
 
 /* ******************* */

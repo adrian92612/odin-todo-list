@@ -1,5 +1,4 @@
-import render from "./domManipulator";
-import { toggleElement } from "./domManipulator";
+import render, { toggleElement } from "./domManipulator";
 
 const mainTaskArray = [];
 
@@ -32,7 +31,7 @@ class Task {
   }
 }
 
-const tabSwitch = () => {
+const switchTab = () => {
   render(mainTaskArray);
 };
 
@@ -68,4 +67,4 @@ export default function addTask(e) {
   e.target.reset();
 }
 
-export { tabSwitch, getLocalDate };
+export { getLocalDate, switchTab };

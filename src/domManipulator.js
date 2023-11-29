@@ -1,11 +1,11 @@
-import { getLocalDate, tabSwitch } from "./taskHandler";
+import { getLocalDate, switchTab } from "./taskHandler";
 
 const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
   currentTab.innerText = element.innerText;
   document.querySelector(".active-tab")?.classList.remove("active-tab");
   element.classList.add("active-tab");
-  tabSwitch();
+  switchTab();
 };
 
 function addProjectNameOptions(name) {
@@ -63,6 +63,18 @@ const toggleElement = (element) => {
   }
 };
 
+const createTaskCard = (task, i) => {
+  const taskCard = document.createElement("div");
+  taskCard.classList.add("task-cards");
+  taskCard.setAttribute("data-index", `${i}`);
+  taskCard.innerHTML = `
+    <h3>${task.title}</h3>
+    <p>${task.details}</p>
+    <p>${task.dueDate}</p>
+  `;
+  return taskCard;
+};
+
 export default function render(taskArray) {
   const main = document.querySelector(".main");
   main.innerHTML = "";
@@ -93,10 +105,7 @@ export default function render(taskArray) {
   }
 
   filteredTask.forEach((task, i) => {
-    const taskContainer = document.createElement("div");
-    taskContainer.innerText = `${task.title} -- ${task.details} -- ${task.dueDate}`;
-    taskContainer.setAttribute("data-index", `${i}`);
-    main.appendChild(taskContainer);
+    main.appendChild(createTaskCard(task, i));
   });
 }
 
