@@ -118,11 +118,11 @@ header {
 
 #add-project > input {
   min-width: 0;
-  padding: 0.5rem;
+  padding: 0.3rem;
 }
 
 #add-project > button {
-  width: 50%;
+  width: 25%;
 }
 
 .project-list {
