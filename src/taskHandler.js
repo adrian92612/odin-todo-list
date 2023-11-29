@@ -49,11 +49,18 @@ const getLocalDate = () => {
   return { today, upcoming };
 };
 
+const removeFromArray = (index) => {
+  mainTaskArray.splice(index, 1);
+  //Resets the mainIndex of tasks in the array
+  mainTaskArray.forEach((task, i) => {
+    task.mainIndex = i;
+  });
+};
+
 export default function addTask(e) {
   e.preventDefault();
   const projName = document.querySelector("#project-name").innerText;
   const date = document.querySelector("#date").value;
-  const today = new Date().toJSON().slice(0, 10);
   const task = new Task(projName, title.value, details.value, date);
 
   if (projName == `Select a Project`) {
@@ -63,8 +70,9 @@ export default function addTask(e) {
 
   toggleElement(e.target);
   mainTaskArray.push(task);
+  task.mainIndex = mainTaskArray.indexOf(task);
   render(mainTaskArray);
   e.target.reset();
 }
 
-export { getLocalDate, switchTab };
+export { getLocalDate, switchTab, removeFromArray };

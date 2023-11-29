@@ -1,4 +1,4 @@
-import { getLocalDate, switchTab } from "./taskHandler";
+import { getLocalDate, removeFromArray, switchTab } from "./taskHandler";
 
 const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
@@ -80,12 +80,17 @@ const toggleElement = (element) => {
 const createTaskCard = (task, i) => {
   const taskCard = document.createElement("div");
   taskCard.classList.add("task-cards");
-  taskCard.setAttribute("data-index", `${i}`);
   taskCard.innerHTML = `
     <h3>${task.title}</h3>
     <p>${task.details}</p>
     <p>${task.dueDate}</p>
+    <p>main index = ${task.mainIndex}<p/>
   `;
+
+  taskCard.addEventListener("click", () => {
+    removeFromArray(task.mainIndex);
+    taskCard.remove();
+  });
   return taskCard;
 };
 
