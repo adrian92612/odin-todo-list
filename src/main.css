@@ -44,6 +44,16 @@ header {
   border: 1px solid black;
 }
 
+#btn-form-close {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  font-size: 20px;
+  right: -2%;
+  top: -5%;
+  z-index: 1;
+}
+
 #details {
   padding: 1rem;
   min-height: 200px;
@@ -123,6 +133,7 @@ header {
 
 #add-project > button {
   width: 25%;
+  font-size: 1.2rem;
 }
 
 .project-list {
@@ -151,6 +162,7 @@ header {
 .task-cards {
   height: 150px;
   border: 2px solid red;
+  padding: 0.5rem;
 }
 
 /* ******************* */

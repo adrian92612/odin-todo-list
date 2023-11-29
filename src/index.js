@@ -36,12 +36,23 @@ const formProjectsListner = () => {
 const addTaskListener = () => {
   const addTaskBtn = document.querySelector(".add-task");
   const title = document.querySelector("#title");
+  const taskForm = document.querySelector(".task-form");
   addTaskBtn.addEventListener("click", () => {
-    const taskForm = document.querySelector(".task-form");
     setTimeout(() => {
       title.focus();
     }, 10);
     toggleElement(taskForm);
+  });
+
+  const minimizeBtn = document.querySelector("#btn-form-close");
+  minimizeBtn.addEventListener("click", () => {
+    toggleElement(taskForm);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "Escape" && !taskForm.classList.contains("hide-element")) {
+      toggleElement(taskForm);
+    }
   });
 };
 
