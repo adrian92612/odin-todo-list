@@ -24,6 +24,7 @@ function addProjectNameOptions(name) {
 function addProjectName(e) {
   e.preventDefault();
   const newProjectName = document.createElement("button");
+  newProjectName.classList.add("btn-project-tab");
   newProjectName.innerText = e.target.children[0].value.trim(); // e.target = form children[0] = input
 
   // Check for no name

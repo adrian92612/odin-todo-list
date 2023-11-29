@@ -8,7 +8,7 @@
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 100px 1fr auto;
   grid-template-areas:
     "header"
     "main"
@@ -87,7 +87,8 @@ header {
   margin-bottom: 2rem;
 }
 
-.btn-tab {
+.btn-tab,
+.btn-project-tab {
   border: none;
   background-color: transparent;
   padding: 0.5rem;
@@ -98,12 +99,30 @@ header {
   transition: 0.2s;
 }
 
-.btn-tab:hover {
+.btn-project-tab {
+  text-align: left;
+}
+
+.btn-tab:hover,
+.btn-project-tab:hover {
   border-bottom: 3px solid black;
 }
 
 .active-tab {
   border-bottom: 3px solid red;
+}
+
+#add-project {
+  display: flex;
+}
+
+#add-project > input {
+  min-width: 0;
+  padding: 0.5rem;
+}
+
+#add-project > button {
+  width: 50%;
 }
 
 .project-list {
@@ -126,6 +145,7 @@ header {
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 225px);
   gap: 1rem;
+  padding: 1rem;
 }
 
 .task-cards {
@@ -166,7 +186,6 @@ footer {
 @media only screen and (min-width: 728px) {
   #root {
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 100px 1fr 100px;
     grid-template-areas:
       "sidebar header"
       "sidebar main"
