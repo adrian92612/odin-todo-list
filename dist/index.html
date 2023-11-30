@@ -19,10 +19,13 @@
           <button id="btn-form-close" type="button">
             <i class="fa fa-minus-square" aria-hidden="true"></i>
           </button>
-          <div class="project-option-wrapper">
+          <!-- <div class="project-option-wrapper">
             <button id="project-name" type="button">Select a Project</button>
             <div class="project-options hide-element"></div>
-          </div>
+          </div> -->
+          <select id="project-selection" required>
+            <option value="" selected disabled>Project?</option>
+          </select>
           <input type="text" id="title" placeholder="Title" required />
           <textarea
             name="textarea"
@@ -34,7 +37,7 @@
           <div class="task-bottom">
             <div class="date-prio">
               <input type="date" id="date" required />
-              <select id="priority-list">
+              <select id="priority-list" required>
                 <option value="" selected disabled>Priority?</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>

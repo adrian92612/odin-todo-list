@@ -3,11 +3,12 @@ import render, { toggleElement } from "./domManipulator";
 const mainTaskArray = [];
 
 class Task {
-  constructor(projectName, title, details, dueDate) {
+  constructor(projectName, title, details, dueDate, priority) {
     this.projectName = projectName;
     this.title = title;
     this.details = details;
     this.dueDate = dueDate;
+    this.priority = priority;
     this.mainIndex;
   }
 
@@ -59,9 +60,9 @@ const removeFromArray = (index) => {
 
 export default function addTask(e) {
   e.preventDefault();
-  const projName = document.querySelector("#project-name").innerText;
+  const projName = document.querySelector("#project-selection").value;
   const date = document.querySelector("#date").value;
-  const task = new Task(projName, title.value, details.value, date);
+  const task = new Task(projName, title.value, details.value, date, projName);
 
   if (projName == `Select a Project`) {
     console.log(`select project name`);
