@@ -26,12 +26,12 @@ const tabListener = () => {
   navTabOptions[1].click();
 };
 
-const formProjectsListner = () => {
-  const formProjectOptions = document.querySelector("#project-name");
-  formProjectOptions.addEventListener("click", () => {
-    toggleElement(document.querySelector(".project-options"));
-  });
-};
+// const formProjectsListner = () => {
+//   const formProjectOptions = document.querySelector("#project-name");
+//   formProjectOptions.addEventListener("click", () => {
+//     toggleElement(document.querySelector(".project-options"));
+//   });
+// };
 
 const addTaskListener = () => {
   const addTaskBtn = document.querySelector(".add-task");
@@ -61,5 +61,5 @@ const addTaskListener = () => {
   addProjectListener();
   tabListener();
   addTaskListener();
-  formProjectsListner();
+  // formProjectsListner();
 })();

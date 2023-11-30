@@ -9,16 +9,11 @@ const setCurrentTab = (element) => {
 };
 
 function addProjectNameOptions(name) {
-  const projName = document.createElement("div");
+  const projName = document.createElement("option");
   projName.innerText = name;
-  const projNameContainer = document.querySelector(".project-options");
-  projNameContainer.appendChild(projName);
-
-  projName.addEventListener("click", () => {
-    const selectedProjName = document.querySelector("#project-name");
-    selectedProjName.innerText = name;
-    toggleElement(projNameContainer);
-  });
+  projName.value = name;
+  const projNameSelection = document.querySelector("#project-selection");
+  projNameSelection.appendChild(projName);
 }
 
 function addProjectName(e) {
@@ -46,8 +41,8 @@ function addProjectName(e) {
   // Add tab switching
   newProjectName.addEventListener("click", () => {
     setCurrentTab(newProjectName);
-    const selectedProjName = document.querySelector("#project-name");
-    selectedProjName.innerText = newProjectName.innerText;
+    const selectedProjName = document.querySelector("#project-selection");
+    selectedProjName.value = newProjectName.innerText;
   });
 
   projectList.appendChild(newProjectName);
