@@ -67,9 +67,6 @@ const toggleElement = (element) => {
     return;
   }
   element.classList.add("hide-element");
-  if (element == document.querySelector(".task-form")) {
-    document.querySelector("#project-name").innerText = `Select a Project`;
-  }
 };
 
 const createTaskCard = (task, i) => {
@@ -80,6 +77,7 @@ const createTaskCard = (task, i) => {
     <h3>${task.title}</h3>
     <p>${task.details}</p>
     <p>${task.dueDate}</p>
+    <p>Priority: ${task.priority}</p>
     <p>main index = ${task.mainIndex}<p/>
   `;
 
