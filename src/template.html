@@ -31,8 +31,20 @@
             rows="5"
             placeholder="Optional details of your task"
           ></textarea>
-          <input type="date" id="date" required />
-          <button type="submit">Add Task</button>
+          <div class="task-bottom">
+            <div class="date-prio">
+              <input type="date" id="date" required />
+              <select id="priority-list">
+                <option value="" selected disabled>Priority?</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <button class="btn-add-task" type="submit">
+              <i class="fa fa-plus-square fa-lg"></i>
+            </button>
+          </div>
         </form>
       </header>
 
@@ -53,7 +65,7 @@
             autocomplete="off"
           />
           <button>
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i>
           </button>
         </form>
         <div class="project-list"></div>
