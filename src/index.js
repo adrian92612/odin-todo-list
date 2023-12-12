@@ -1,5 +1,5 @@
 import "./main.css";
-import addTask from "./taskHandler";
+import addTask, { getLocalDate } from "./taskHandler";
 import { addProjectName, setCurrentTab, toggleElement } from "./domManipulator";
 
 const taskFormListener = () => {
@@ -61,5 +61,5 @@ const addTaskListener = () => {
   addProjectListener();
   tabListener();
   addTaskListener();
-  // formProjectsListner();
+  console.log(getLocalDate().today());
 })();

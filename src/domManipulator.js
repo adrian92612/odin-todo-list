@@ -100,10 +100,13 @@ export default function render(taskArray) {
       break;
     case "Today":
       filteredTask = taskArray.filter((task) => {
+        console.log(getLocalDate().today());
+        console.log(task.dueDate);
         return task.dueDate == getLocalDate().today();
       });
       break;
     case "Upcoming":
+      console.log("upcoming");
       filteredTask = taskArray.filter((task) => {
         return (
           task.dueDate > getLocalDate().today() &&
@@ -112,10 +115,13 @@ export default function render(taskArray) {
       });
       break;
     default:
+      console.log("proj");
       filteredTask = taskArray.filter((task) => {
         return task.projectName == tab;
       });
   }
+
+  console.log(filteredTask);
 
   filteredTask.forEach((task, i) => {
     main.appendChild(createTaskCard(task, i));

@@ -37,9 +37,18 @@ const switchTab = () => {
 };
 
 const getLocalDate = () => {
+  function padZero(date) {
+    if (date < 10) {
+      return "0" + date;
+    }
+    return date;
+  }
+
   function today() {
     const date = new Date();
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(
+      date.getDate()
+    )}`;
   }
   function upcoming(days) {
     const upcoming = new Date(today());
@@ -62,7 +71,7 @@ export default function addTask(e) {
   e.preventDefault();
   const projName = document.querySelector("#project-selection").value;
   const date = document.querySelector("#date").value;
-  const prio = document.querySelector("#priority-selection").value;
+  const prio = document.querySelector("#priority-list").value;
   const task = new Task(projName, title.value, details.value, date, prio);
 
   if (projName == `Select a Project`) {
