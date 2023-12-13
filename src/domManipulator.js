@@ -51,7 +51,7 @@ function addProjectName(e) {
   });
 
   mainProjArray.push(inputProjName);
-  localStorage.setItem("projArr", JSON.stringify(mainProjArray));
+  localStorage.setItem("projArray", JSON.stringify(mainProjArray));
 
   projectList.appendChild(newProjectName);
   addProjectNameOptions(newProjectName.innerText);
@@ -61,17 +61,6 @@ function addProjectName(e) {
 const toggleElement = (element) => {
   if (element.classList.contains("hide-element")) {
     element.classList.remove("hide-element");
-    if (element == document.querySelector(".task-form")) {
-      const currentTab = document.querySelector(".current-tab").innerText;
-      if (
-        currentTab != "All" &&
-        currentTab != "Today" &&
-        currentTab != "Upcoming"
-      ) {
-        const selectedProjName = document.querySelector("#project-name");
-        selectedProjName.innerText = currentTab;
-      }
-    }
     return;
   }
   element.classList.add("hide-element");

@@ -59,6 +59,14 @@ const getLocalDate = () => {
   return { today, upcoming };
 };
 
+const mergeTaskArray = (storedTasksArray) => {
+  if (storedTasksArray == undefined) {
+    return;
+  }
+  mainTaskArray.push(...storedTasksArray);
+  render(mainTaskArray);
+};
+
 const removeFromArray = (index) => {
   mainTaskArray.splice(index, 1);
   //Resets the mainIndex of tasks in the array
@@ -86,4 +94,4 @@ export default function addTask(e) {
   e.target.reset();
 }
 
-export { getLocalDate, switchTab, removeFromArray };
+export { getLocalDate, switchTab, removeFromArray, mergeTaskArray };

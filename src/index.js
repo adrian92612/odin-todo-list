@@ -1,5 +1,5 @@
 import "./main.css";
-import addTask, { getLocalDate } from "./taskHandler";
+import addTask, { getLocalDate, mergeTaskArray } from "./taskHandler";
 import { addProjectName, setCurrentTab, toggleElement } from "./domManipulator";
 
 const taskFormListener = () => {
@@ -56,10 +56,27 @@ const addTaskListener = () => {
   });
 };
 
+const addExistingProjects = () => {
+  const projects = JSON.parse(localStorage.getItem("projArray"));
+  if (projects == undefined) {
+    return;
+  }
+  const projInputBox = document.querySelector("#add-new-project");
+  const addProjBtn = document.querySelector("#add-project-btn");
+  projects.forEach((proj) => {
+    projInputBox.value = proj;
+    addProjBtn.click();
+  });
+};
+
 (function init() {
   taskFormListener();
   addProjectListener();
   tabListener();
   addTaskListener();
-  console.log(localStorage);
+
+  if (localStorage.length > 0) {
+    addExistingProjects();
+    mergeTaskArray(JSON.parse(localStorage.getItem("taskArray")));
+  }
 })();
