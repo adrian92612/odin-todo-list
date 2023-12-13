@@ -1,5 +1,7 @@
 import { getLocalDate, removeFromArray, switchTab } from "./taskHandler";
 
+const mainProjArray = [];
+
 const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
   currentTab.innerText = element.innerText;
@@ -18,12 +20,10 @@ function addProjectNameOptions(name) {
 
 function addProjectName(e) {
   e.preventDefault();
-  const newProjectName = document.createElement("button");
-  newProjectName.classList.add("btn-project-tab");
-  newProjectName.innerText = e.target.children[0].value.trim(); // e.target = form children[0] = input
+  const inputProjName = e.target.children[0].value.trim(); // e.target = form children[0] = input
 
   // Check for no name
-  if (newProjectName.innerText == "" || newProjectName == null) {
+  if (inputProjName == "" || inputProjName == null) {
     e.target.reset();
     return;
   }
@@ -31,12 +31,17 @@ function addProjectName(e) {
   // Check for same name
   const projectList = document.querySelector(".project-list");
   const testName = Array.from(projectList.children).find((child) => {
-    return child.innerText == newProjectName.innerText;
+    return child.innerText == inputProjName;
   });
+
   if (testName != undefined) {
     e.target.reset();
     return;
   }
+
+  const newProjectName = document.createElement("button");
+  newProjectName.classList.add("btn-project-tab");
+  newProjectName.innerText = inputProjName;
 
   // Add tab switching
   newProjectName.addEventListener("click", () => {
@@ -44,6 +49,9 @@ function addProjectName(e) {
     const selectedProjName = document.querySelector("#project-selection");
     selectedProjName.value = newProjectName.innerText;
   });
+
+  mainProjArray.push(inputProjName);
+  localStorage.setItem("projArr", JSON.stringify(mainProjArray));
 
   projectList.appendChild(newProjectName);
   addProjectNameOptions(newProjectName.innerText);
@@ -100,13 +108,10 @@ export default function render(taskArray) {
       break;
     case "Today":
       filteredTask = taskArray.filter((task) => {
-        console.log(getLocalDate().today());
-        console.log(task.dueDate);
         return task.dueDate == getLocalDate().today();
       });
       break;
     case "Upcoming":
-      console.log("upcoming");
       filteredTask = taskArray.filter((task) => {
         return (
           task.dueDate > getLocalDate().today() &&
@@ -115,13 +120,10 @@ export default function render(taskArray) {
       });
       break;
     default:
-      console.log("proj");
       filteredTask = taskArray.filter((task) => {
         return task.projectName == tab;
       });
   }
-
-  console.log(filteredTask);
 
   filteredTask.forEach((task, i) => {
     main.appendChild(createTaskCard(task, i));

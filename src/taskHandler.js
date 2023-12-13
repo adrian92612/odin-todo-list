@@ -75,13 +75,13 @@ export default function addTask(e) {
   const task = new Task(projName, title.value, details.value, date, prio);
 
   if (projName == `Select a Project`) {
-    console.log(`select project name`);
     return;
   }
 
   toggleElement(e.target);
   mainTaskArray.push(task);
   task.mainIndex = mainTaskArray.indexOf(task);
+  localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
   render(mainTaskArray);
   e.target.reset();
 }

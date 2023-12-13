@@ -61,5 +61,5 @@ const addTaskListener = () => {
   addProjectListener();
   tabListener();
   addTaskListener();
-  console.log(getLocalDate().today());
+  console.log(localStorage);
 })();
