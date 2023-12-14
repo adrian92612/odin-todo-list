@@ -69,6 +69,8 @@ const mergeTaskArray = (storedTasksArray) => {
 
 const removeFromArray = (index) => {
   mainTaskArray.splice(index, 1);
+  //Update the local storage
+  localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
   //Resets the mainIndex of tasks in the array
   mainTaskArray.forEach((task, i) => {
     task.mainIndex = i;

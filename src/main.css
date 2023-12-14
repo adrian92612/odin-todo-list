@@ -1,3 +1,7 @@
+:root {
+  --sideBarWidth: 250px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -147,8 +151,24 @@ header {
   transition: 0.2s;
 }
 
+.proj-container {
+  display: flex;
+  gap: 10px;
+}
+
 .btn-project-tab {
   text-align: left;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-trash {
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
 }
 
 .btn-tab:hover,
@@ -236,7 +256,7 @@ footer {
 
 @media only screen and (min-width: 728px) {
   #root {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: var(--sideBarWidth) 1fr;
     grid-template-areas:
       "sidebar header"
       "sidebar main"

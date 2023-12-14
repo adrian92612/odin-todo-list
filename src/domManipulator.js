@@ -41,7 +41,16 @@ function addProjectName(e) {
 
   const newProjectName = document.createElement("button");
   newProjectName.classList.add("btn-project-tab");
-  newProjectName.innerText = inputProjName;
+  newProjectName.innerHTML = inputProjName;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+  deleteBtn.classList.add("btn-trash");
+
+  const container = document.createElement("div");
+  container.classList.add("proj-container");
+  container.appendChild(newProjectName);
+  container.appendChild(deleteBtn);
 
   // Add tab switching
   newProjectName.addEventListener("click", () => {
@@ -53,7 +62,7 @@ function addProjectName(e) {
   mainProjArray.push(inputProjName);
   localStorage.setItem("projArray", JSON.stringify(mainProjArray));
 
-  projectList.appendChild(newProjectName);
+  projectList.appendChild(container);
   addProjectNameOptions(newProjectName.innerText);
   e.target.reset();
 }
