@@ -77,6 +77,15 @@ const removeFromArray = (index) => {
   });
 };
 
+const removeTasksFromProjects = (projName) => {
+  mainTaskArray.forEach((task, i) => {
+    if (task.projectName == projName) {
+      removeFromArray(i);
+    }
+  });
+  render(mainTaskArray);
+};
+
 export default function addTask(e) {
   e.preventDefault();
   const projName = document.querySelector("#project-selection").value;
@@ -96,4 +105,10 @@ export default function addTask(e) {
   e.target.reset();
 }
 
-export { getLocalDate, switchTab, removeFromArray, mergeTaskArray };
+export {
+  getLocalDate,
+  switchTab,
+  removeFromArray,
+  removeTasksFromProjects,
+  mergeTaskArray,
+};

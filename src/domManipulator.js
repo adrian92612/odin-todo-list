@@ -1,6 +1,11 @@
-import { getLocalDate, removeFromArray, switchTab } from "./taskHandler";
+import {
+  getLocalDate,
+  removeFromArray,
+  removeTasksFromProjects,
+  switchTab,
+} from "./taskHandler";
 
-const mainProjArray = [];
+let mainProjArray = [];
 
 const setCurrentTab = (element) => {
   const currentTab = document.querySelector(".current-tab");
@@ -9,6 +14,14 @@ const setCurrentTab = (element) => {
   element.classList.add("active-tab");
   switchTab();
 };
+
+function addProjectNameOptions(name) {
+  const projName = document.createElement("option");
+  projName.innerText = name;
+  projName.value = name;
+  const projNameSelection = document.querySelector("#project-selection");
+  projNameSelection.appendChild(projName);
+}
 
 function addProjectName(e) {
   e.preventDefault();
@@ -41,6 +54,7 @@ function addProjectName(e) {
 
   const deleteContainer = document.createElement("div");
   deleteContainer.classList.add("delete-container");
+  deleteContainer.classList.add("hide-element");
   const confirmSentence = document.createElement("p");
   confirmSentence.innerText = `Remove?`;
   const yesBtn = document.createElement("button");
@@ -53,6 +67,22 @@ function addProjectName(e) {
   container.classList.add("proj-container");
   container.append(newProjectName, deleteBtn, deleteContainer);
 
+  deleteBtn.addEventListener("click", () => {
+    deleteContainer.classList.remove("hide-element");
+  });
+
+  noBtn.addEventListener("click", () => {
+    deleteContainer.classList.add("hide-element");
+  });
+
+  yesBtn.addEventListener("click", () => {
+    mainProjArray = mainProjArray.filter((name) => name !== inputProjName);
+    localStorage.setItem("projArray", JSON.stringify(mainProjArray));
+    setCurrentTab(document.querySelector(".nav-options").firstElementChild); // All tab
+    removeTasksFromProjects(inputProjName);
+    container.remove();
+  });
+
   // Add tab switching
   newProjectName.addEventListener("click", () => {
     setCurrentTab(newProjectName);
@@ -64,6 +94,7 @@ function addProjectName(e) {
   localStorage.setItem("projArray", JSON.stringify(mainProjArray));
 
   projectList.appendChild(container);
+  addProjectNameOptions(inputProjName);
   e.target.reset();
 }
 
