@@ -154,6 +154,18 @@ header {
 .proj-container {
   display: flex;
   gap: 10px;
+  position: relative;
+}
+
+.delete-container {
+  position: absolute;
+  right: -5%;
+  display: flex;
+  gap: 0.3rem;
+  background-color: red;
+  border-radius: 20px;
+  padding: 0.3rem 0.6rem;
+  display: none;
 }
 
 .btn-project-tab {
@@ -169,6 +181,11 @@ header {
   font-size: 1.3rem;
   background-color: transparent;
   border: none;
+  transition: 0.2s;
+}
+
+.btn-trash:hover {
+  transform: scale(1.3);
 }
 
 .btn-tab:hover,
@@ -199,8 +216,6 @@ header {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  max-height: 200px;
-  overflow-y: scroll;
 }
 
 /* ******************* */

@@ -10,14 +10,6 @@ const setCurrentTab = (element) => {
   switchTab();
 };
 
-function addProjectNameOptions(name) {
-  const projName = document.createElement("option");
-  projName.innerText = name;
-  projName.value = name;
-  const projNameSelection = document.querySelector("#project-selection");
-  projNameSelection.appendChild(projName);
-}
-
 function addProjectName(e) {
   e.preventDefault();
   const inputProjName = e.target.children[0].value.trim(); // e.target = form children[0] = input
@@ -47,10 +39,19 @@ function addProjectName(e) {
   deleteBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
   deleteBtn.classList.add("btn-trash");
 
+  const deleteContainer = document.createElement("div");
+  deleteContainer.classList.add("delete-container");
+  const confirmSentence = document.createElement("p");
+  confirmSentence.innerText = `Remove?`;
+  const yesBtn = document.createElement("button");
+  yesBtn.innerText = `Yes`;
+  const noBtn = document.createElement("button");
+  noBtn.innerText = `No`;
+  deleteContainer.append(confirmSentence, yesBtn, noBtn);
+
   const container = document.createElement("div");
   container.classList.add("proj-container");
-  container.appendChild(newProjectName);
-  container.appendChild(deleteBtn);
+  container.append(newProjectName, deleteBtn, deleteContainer);
 
   // Add tab switching
   newProjectName.addEventListener("click", () => {
@@ -63,7 +64,6 @@ function addProjectName(e) {
   localStorage.setItem("projArray", JSON.stringify(mainProjArray));
 
   projectList.appendChild(container);
-  addProjectNameOptions(newProjectName.innerText);
   e.target.reset();
 }
 
@@ -84,7 +84,6 @@ const createTaskCard = (task, i) => {
     <p>${task.details}</p>
     <p>${task.dueDate}</p>
     <p>Priority: ${task.priority}</p>
-    <p>main index = ${task.mainIndex}<p/>
   `;
 
   taskCard.addEventListener("click", () => {
