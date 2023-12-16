@@ -23,6 +23,15 @@ function addProjectNameOptions(name) {
   projNameSelection.appendChild(projName);
 }
 
+function removeProjectNameOption(name) {
+  const projects = [...document.querySelector("#project-selection").children];
+  projects.forEach((proj) => {
+    if (proj.innerText == name) {
+      proj.remove();
+    }
+  });
+}
+
 function addProjectName(e) {
   e.preventDefault();
   const inputProjName = e.target.children[0].value.trim(); // e.target = form children[0] = input
@@ -79,6 +88,7 @@ function addProjectName(e) {
     mainProjArray = mainProjArray.filter((name) => name !== inputProjName);
     localStorage.setItem("projArray", JSON.stringify(mainProjArray));
     setCurrentTab(document.querySelector(".nav-options").firstElementChild); // All tab
+    removeProjectNameOption(inputProjName);
     removeTasksFromProjects(inputProjName);
     container.remove();
   });
