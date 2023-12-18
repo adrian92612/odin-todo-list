@@ -1,11 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
+
 :root {
   --sideBarWidth: 250px;
+
+  /* colors */
+  --black: #030404;
+  --rust: #b7410e;
+  --metallicBrown: #a53c15;
+  --spanishGray: #989898;
+  --lightGray: #d3d3d3;
+  --darkGray: #726667;
+  --darkGreen: #1f342d;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* font-family: "Alkatra", sans-serif; */
 }
 
 #root {
@@ -19,6 +31,8 @@
   max-width: 1200px;
   min-height: 100svh;
   margin: 0 auto;
+
+  background-color: var(--lightGray);
 }
 
 /********** HEADER **********/
@@ -26,7 +40,9 @@
 header {
   position: relative;
   grid-area: header;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  /* background-color: var(--rust); */
+  color: var(--black);
 }
 
 .task-form {
@@ -39,7 +55,7 @@ header {
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+  border: 1px solid black;
   width: 90%;
 
   margin: 0 auto;
@@ -101,12 +117,12 @@ header {
   resize: vertical;
 }
 
-.project-option-wrapper,
+/* .project-option-wrapper,
 .project-option-wrapper button,
 .project-option-wrapper div {
   width: 100%;
   border: 1px solid orange;
-}
+} */
 
 .project-option-wrapper {
   position: relative;
@@ -125,7 +141,8 @@ header {
 
 .side-bar {
   grid-area: sidebar;
-  border: 1px solid black;
+  background-color: var(--rust);
+  color: var(--black);
   display: none;
   padding: 2rem 0.5rem;
   gap: 0.5rem;
@@ -141,6 +158,7 @@ header {
 
 .btn-tab,
 .btn-project-tab {
+  color: var(--black);
   border: none;
   background-color: transparent;
   padding: 0.5rem;
@@ -193,7 +211,7 @@ header {
 }
 
 .active-tab {
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid var(--black);
 }
 
 #add-project {
@@ -223,18 +241,19 @@ header {
 
 .main {
   grid-area: main;
-  border: 1px solid green;
   display: grid;
   align-self: start;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 225px);
+  grid-template-columns: repeat(auto-fit, 300px);
   gap: 1rem;
   padding: 1rem;
+  color: var(--black);
 }
 
 .task-cards {
-  height: 150px;
-  border: 2px solid red;
+  height: 300px;
+  box-shadow: 1px 1px 3px var(--darkGray);
+  border-radius: 10px;
   padding: 0.5rem;
 }
 
@@ -244,7 +263,7 @@ header {
 
 footer {
   grid-area: footer;
-  border: 1px solid blue;
+  border: 1px solid var(--black);
 }
 
 /* ******************* */

@@ -120,7 +120,7 @@ const createTaskCard = (task, i) => {
   const taskCard = document.createElement("div");
   taskCard.classList.add("task-cards");
   taskCard.innerHTML = `
-    <i class="fa fa-close">
+    <i class="fa fa-close" style="color: #b7410e"></i>
     <h3>${task.title}</h3>
     <p>${task.details}</p>
     <p>${task.dueDate}</p>
