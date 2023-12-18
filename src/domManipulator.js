@@ -116,22 +116,44 @@ const toggleElement = (element) => {
   element.classList.add("hide-element");
 };
 
-const createTaskCard = (task, i) => {
-  const taskCard = document.createElement("div");
-  taskCard.classList.add("task-cards");
-  taskCard.innerHTML = `
-    <i class="fa fa-close" style="color: #b7410e"></i>
-    <h3>${task.title}</h3>
-    <p>${task.details}</p>
-    <p>${task.dueDate}</p>
-    <p>Priority: ${task.priority}</p>
-  `;
+const taskCard = (task) => {
+  const cardContainer = document.createElement("div");
+  cardContainer.classList.add("task-cards");
 
-  taskCard.addEventListener("click", () => {
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("btn-card-delete");
+  deleteBtn.innerHTML = `<i class="fa fa-close" style="color: #b7410e"></i>`;
+
+  const title = document.createElement("h3");
+  title.innerText = task.title;
+  const details = document.createElement("p");
+  details.innerText = task.details;
+  const dueDate = document.createElement("p");
+  dueDate.innerText = task.dueDate;
+  const priority = document.createElement("p");
+  priority.innerText = task.priority;
+
+  const editBtn = document.createElement("button");
+  editBtn.innerHTML =
+    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
+  const taskDoneBtn = document.createElement("button");
+  taskDoneBtn.innerHTML = `<i class="fa fa-check-square-o" aria-hidden="true"></i>`;
+
+  deleteBtn.addEventListener("click", () => {
     removeFromArray(task.mainIndex);
-    taskCard.remove();
+    cardContainer.remove();
   });
-  return taskCard;
+
+  cardContainer.append(
+    deleteBtn,
+    title,
+    details,
+    dueDate,
+    priority,
+    editBtn,
+    taskDoneBtn
+  );
+  return cardContainer;
 };
 
 export default function render(taskArray) {
@@ -163,9 +185,11 @@ export default function render(taskArray) {
       });
   }
 
-  filteredTask.forEach((task, i) => {
-    main.appendChild(createTaskCard(task, i));
-  });
+  // filteredTask.forEach((task, i) => {
+  //   main.appendChild(createTaskCard(task, i));
+  // });
+
+  filteredTask.forEach((task) => main.append(taskCard(task)));
 }
 
 export { addProjectName, setCurrentTab, toggleElement };
