@@ -21,6 +21,10 @@
   /* font-family: "Alkatra", sans-serif; */
 }
 
+*:focus {
+  outline: none;
+}
+
 #root {
   display: grid;
   grid-template-columns: 1fr;
@@ -48,74 +52,63 @@ header {
 .task-form {
   position: absolute;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  left: 50%;
-  top: 110%;
-  transform: translateX(-50%);
-  display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  width: 90%;
-  z-index: 99;
+  left: 50%;
+  top: 120%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 400px;
+  z-index: 1;
 
-  margin: 0 auto;
   padding: 1rem;
-  border: 1px solid black;
-  background-color: white;
+  border: 2px solid var(--black);
+  background-color: var(--lightGray);
+  border-radius: 10px;
 }
 
 .task-form > * {
-  padding: 0.5rem;
+  padding: var(--paddingFormInput);
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--rust);
 }
 
-.task-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
-.date-prio {
-  border: 1px solid black;
-  flex: 0 1 250px;
-  display: flex;
-  gap: 0.5rem;
-}
-
-#date {
-  min-width: 120px;
-  padding: 0.5rem;
-}
-
-#priority-list {
-  flex: 1 1 100px;
-  text-align: center;
-}
-
-.prio-option {
-  flex: 1 1;
-  padding: 0.5rem;
-}
-
-.btn-add-task {
-  font-size: 2rem;
-}
-
-#btn-form-close {
+.task-form > button {
+  color: var(--rust);
   position: absolute;
-  height: 25px;
-  width: 25px;
-  font-size: 20px;
-  right: -2%;
-  top: -5%;
-  z-index: 1;
-  padding: 0;
-  line-height: 5px;
+  align-self: end;
+  border: none;
+}
+
+#title {
+  padding-right: 25px;
 }
 
 #details {
-  padding: 1rem;
-  height: 100px;
-  resize: vertical;
+  flex-grow: 1;
+}
+
+#project-selection {
+}
+
+#date,
+#priority-list {
+  width: 150px;
+}
+
+#btn-form-close {
+  height: 25px;
+  width: 25px;
+  font-size: 1.3rem;
+  top: 0.2rem;
+  z-index: 1;
+}
+
+#btn-add-task {
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  bottom: 0.5rem;
 }
 
 .edit-task {
@@ -136,17 +129,18 @@ header {
   border-radius: 5px;
 }
 
-#edit-title {
-  padding: var(--paddingFormInput);
+.edit-task * {
   background-color: transparent;
   border: none;
+}
+
+#edit-title {
+  padding: var(--paddingFormInput);
   border-bottom: 1px solid var(--rust);
 }
 
 #edit-details {
   flex-grow: 1;
-  border: none;
-  background-color: transparent;
   border-bottom: 1px solid var(--rust);
   padding: var(--paddingFormInput);
 }
@@ -154,8 +148,6 @@ header {
 #edit-date,
 #edit-priority {
   width: 150px;
-  background-color: transparent;
-  border: none;
   border-bottom: 1px solid var(--rust);
   padding: var(--paddingFormInput);
 }

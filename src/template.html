@@ -19,31 +19,27 @@
           <button id="btn-form-close" type="button">
             <i class="fa fa-minus-square" aria-hidden="true"></i>
           </button>
-          <select id="project-selection" required>
-            <option value="" selected disabled>Project?</option>
-          </select>
+
           <input type="text" id="title" placeholder="Title" required />
           <textarea
-            name="textarea"
             id="details"
             cols="20"
             rows="5"
             placeholder="Optional details of your task"
           ></textarea>
-          <div class="task-bottom">
-            <div class="date-prio">
-              <input type="date" id="date" required />
-              <select id="priority-list" required>
-                <option value="" selected disabled>Priority?</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
-            </div>
-            <button class="btn-add-task" type="submit">
-              <i class="fa fa-plus-square fa-lg"></i>
-            </button>
-          </div>
+          <select id="project-selection" required>
+            <option value="" selected disabled>Project?</option>
+          </select>
+          <input type="date" id="date" required />
+          <select id="priority-list" required>
+            <option value="" selected disabled>Priority?</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button id="btn-add-task" type="submit">
+            <i class="fa fa-plus-square fa-lg"></i>
+          </button>
         </form>
 
         <form action="#" class="edit-task hide-element">
