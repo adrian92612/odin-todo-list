@@ -45,6 +45,31 @@
             </button>
           </div>
         </form>
+
+        <form action="#" class="edit-task">
+          <input type="text" id="edit-title" placeholder="Title" required />
+          <textarea
+            id="edit-details"
+            cols="20"
+            rows="5"
+            placeholder="Optional details of your task"
+          ></textarea>
+          <input type="date" id="edit-date" required />
+          <select id="edit-priority" required>
+            <option value="" selected disabled>Priority?</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <div>
+            <button id="edit-discard" type="button">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <button id="edit-save" type="submit">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
       </header>
 
       <nav class="side-bar">

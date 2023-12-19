@@ -125,6 +125,8 @@ const taskCardCompleted = (task, card) => {
     : card.classList.remove("task-completed");
 };
 
+const taskEdit = (task) => {};
+
 const taskCard = (task) => {
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("task-cards");
@@ -158,6 +160,10 @@ const taskCard = (task) => {
   deleteBtn.addEventListener("click", () => {
     removeFromArray(task.mainIndex);
     cardContainer.remove();
+  });
+
+  editBtn.addEventListener("click", () => {
+    taskEdit(task);
   });
 
   taskDoneBtn.addEventListener("click", () =>

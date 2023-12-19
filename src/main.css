@@ -2,6 +2,7 @@
 
 :root {
   --sideBarWidth: 250px;
+  --paddingFormInput: 0.5rem;
 
   /* colors */
   --black: #030404;
@@ -117,24 +118,67 @@ header {
   resize: vertical;
 }
 
-/* .project-option-wrapper,
-.project-option-wrapper button,
-.project-option-wrapper div {
-  width: 100%;
-  border: 1px solid orange;
-} */
-
-.project-option-wrapper {
-  position: relative;
-}
-
-.project-options {
+.edit-task {
   position: absolute;
-  background-color: white;
-  height: 100px;
-  overflow-y: scroll;
+  width: 350px;
+  height: 300px;
+  border: 2px solid var(--black);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.5rem;
+  left: 50%;
+  top: 200%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background-color: var(--lightGray);
+  box-shadow: 0 5px 10px var(--black);
+  border-radius: 5px;
 }
 
+#edit-title {
+  padding: var(--paddingFormInput);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rust);
+}
+
+#edit-details {
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--rust);
+  padding: var(--paddingFormInput);
+}
+
+#edit-date,
+#edit-priority {
+  width: 150px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rust);
+  padding: var(--paddingFormInput);
+}
+
+.edit-task > div {
+  position: absolute;
+  align-self: end;
+  bottom: 1rem;
+}
+
+.edit-task button {
+  width: 25px;
+  height: 25px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: transparent;
+  color: var(--rust);
+  transition: 0.3s;
+}
+
+.edit-task button:hover {
+  transform: scale(1.3);
+}
 /* ******************* */
 
 /********** SIDEBAR **********/
