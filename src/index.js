@@ -69,11 +69,20 @@ const addExistingProjects = () => {
   });
 };
 
+const editTaskDiscardListener = () => {
+  const editDiscardBtn = document.querySelector("#edit-discard");
+  const editTaskForm = document.querySelector(".edit-task");
+  editDiscardBtn.addEventListener("click", () =>
+    editTaskForm.classList.add("hide-element")
+  );
+};
+
 (function init() {
   taskFormListener();
   addProjectListener();
   tabListener();
   addTaskListener();
+  editTaskDiscardListener();
 
   if (localStorage.length > 0) {
     addExistingProjects();

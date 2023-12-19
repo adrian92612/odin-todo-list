@@ -72,6 +72,10 @@ const updateLocStorArray = () => {
   localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
 };
 
+const getMainTaskArray = () => {
+  return mainTaskArray;
+};
+
 const removeFromArray = (index) => {
   mainTaskArray.splice(index, 1);
   //Resets the mainIndex of tasks in the array
@@ -117,4 +121,5 @@ export {
   removeTasksFromProjects,
   mergeTaskArray,
   updateLocStorArray,
+  getMainTaskArray,
 };

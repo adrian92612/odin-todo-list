@@ -1,5 +1,6 @@
 import {
   getLocalDate,
+  getMainTaskArray,
   removeFromArray,
   removeTasksFromProjects,
   switchTab,
@@ -125,7 +126,30 @@ const taskCardCompleted = (task, card) => {
     : card.classList.remove("task-completed");
 };
 
-const taskEdit = (task) => {};
+const taskEdit = (task) => {
+  const editTaskForm = document.querySelector(".edit-task");
+  editTaskForm.classList.remove("hide-element");
+
+  const editTitle = document.querySelector("#edit-title");
+  editTitle.value = task.title;
+  const editDetails = document.querySelector("#edit-details");
+  editDetails.value = task.details;
+  const editDate = document.querySelector("#edit-date");
+  editDate.value = task.dueDate;
+  const editPriority = document.querySelector("#edit-priority");
+  editPriority.value = task.priority;
+
+  editTaskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    task.title = editTitle.value;
+    task.details = editDetails.value;
+    task.dueDate = editDate.value;
+    task.priority = editPriority.value;
+    editTaskForm.classList.add("hide-element");
+    updateLocStorArray();
+    render(getMainTaskArray());
+  });
+};
 
 const taskCard = (task) => {
   const cardContainer = document.createElement("div");
