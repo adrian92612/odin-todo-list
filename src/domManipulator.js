@@ -3,6 +3,7 @@ import {
   removeFromArray,
   removeTasksFromProjects,
   switchTab,
+  updateLocStorArray,
 } from "./taskHandler";
 
 let mainProjArray = [];
@@ -116,33 +117,52 @@ const toggleElement = (element) => {
   element.classList.add("hide-element");
 };
 
+const taskCardCompleted = (task, card) => {
+  task.isCompleted = !task.isCompleted;
+  updateLocStorArray();
+  task.isCompleted
+    ? card.classList.add("task-completed")
+    : card.classList.remove("task-completed");
+};
+
 const taskCard = (task) => {
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("task-cards");
+  if (task.isCompleted) cardContainer.classList.add("task-completed");
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("btn-card-delete");
-  deleteBtn.innerHTML = `<i class="fa fa-close" style="color: #b7410e"></i>`;
+  deleteBtn.innerHTML = `<i class="fa fa-close fa-lg"></i>`;
 
   const title = document.createElement("h3");
   title.innerText = task.title;
   const details = document.createElement("p");
   details.innerText = task.details;
   const dueDate = document.createElement("p");
-  dueDate.innerText = task.dueDate;
+  dueDate.innerText = `Due Date: ${task.dueDate}`;
   const priority = document.createElement("p");
-  priority.innerText = task.priority;
+  priority.innerText = `Priority: ${task.priority}`;
 
   const editBtn = document.createElement("button");
   editBtn.innerHTML =
     '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
+  editBtn.classList.add("btn-card-edit");
+
   const taskDoneBtn = document.createElement("button");
   taskDoneBtn.innerHTML = `<i class="fa fa-check-square-o" aria-hidden="true"></i>`;
+  taskDoneBtn.classList.add("btn-card-done");
+
+  const editDoneContainer = document.createElement("div");
+  editDoneContainer.append(editBtn, taskDoneBtn);
 
   deleteBtn.addEventListener("click", () => {
     removeFromArray(task.mainIndex);
     cardContainer.remove();
   });
+
+  taskDoneBtn.addEventListener("click", () =>
+    taskCardCompleted(task, cardContainer)
+  );
 
   cardContainer.append(
     deleteBtn,
@@ -150,8 +170,7 @@ const taskCard = (task) => {
     details,
     dueDate,
     priority,
-    editBtn,
-    taskDoneBtn
+    editDoneContainer
   );
   return cardContainer;
 };
@@ -184,10 +203,6 @@ export default function render(taskArray) {
         return task.projectName == tab;
       });
   }
-
-  // filteredTask.forEach((task, i) => {
-  //   main.appendChild(createTaskCard(task, i));
-  // });
 
   filteredTask.forEach((task) => main.append(taskCard(task)));
 }

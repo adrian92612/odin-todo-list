@@ -10,8 +10,9 @@ class Task {
     this.dueDate = dueDate;
     this.priority = priority;
     this.mainIndex;
+    this.isCompleted = false;
   }
-
+  x;
   setProjectName(newProjectName) {
     this.projectName = newProjectName;
   }
@@ -67,6 +68,10 @@ const mergeTaskArray = (storedTasksArray) => {
   render(mainTaskArray);
 };
 
+const updateLocStorArray = () => {
+  localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
+};
+
 const removeFromArray = (index) => {
   mainTaskArray.splice(index, 1);
   //Resets the mainIndex of tasks in the array
@@ -74,7 +79,7 @@ const removeFromArray = (index) => {
     task.mainIndex = i;
   });
   //Update the local storage
-  localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
+  updateLocStorArray();
 };
 
 const removeTasksFromProjects = (projName) => {
@@ -100,7 +105,7 @@ export default function addTask(e) {
   toggleElement(e.target);
   mainTaskArray.push(task);
   task.mainIndex = mainTaskArray.indexOf(task);
-  localStorage.setItem("taskArray", JSON.stringify(mainTaskArray));
+  updateLocStorArray();
   render(mainTaskArray);
   e.target.reset();
 }
@@ -111,4 +116,5 @@ export {
   removeFromArray,
   removeTasksFromProjects,
   mergeTaskArray,
+  updateLocStorArray,
 };
