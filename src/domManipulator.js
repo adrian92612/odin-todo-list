@@ -1,4 +1,4 @@
-import {
+import addTask, {
   getLocalDate,
   getMainTaskArray,
   removeFromArray,
@@ -15,6 +15,21 @@ const setCurrentTab = (element) => {
   document.querySelector(".active-tab")?.classList.remove("active-tab");
   element.classList.add("active-tab");
   switchTab();
+};
+
+const toggleForm = (form, show) => {
+  const createTaskForm = document.querySelector(".task-form");
+  const editTaskForm = document.querySelector(".edit-task");
+  const mainContent = document.querySelector(".main");
+
+  createTaskForm.classList.add("hide-element");
+  editTaskForm.classList.add("hide-element");
+  mainContent.classList.remove("blur-main");
+  if (show) {
+    form.classList.remove("hide-element");
+    mainContent.classList.add("blur-main");
+    return;
+  }
 };
 
 function addProjectNameOptions(name) {
@@ -128,7 +143,7 @@ const taskCardCompleted = (task, card) => {
 
 const taskEdit = (task) => {
   const editTaskForm = document.querySelector(".edit-task");
-  editTaskForm.classList.remove("hide-element");
+  toggleForm(editTaskForm, true);
 
   const editTitle = document.querySelector("#edit-title");
   editTitle.value = task.title;
@@ -145,13 +160,18 @@ const taskEdit = (task) => {
     task.details = editDetails.value;
     task.dueDate = editDate.value;
     task.priority = editPriority.value;
-    editTaskForm.classList.add("hide-element");
+    toggleForm(editTaskForm, false);
     updateLocStorArray();
     render(getMainTaskArray());
   });
+
+  const editDiscardBtn = document.querySelector("#edit-discard");
+  editDiscardBtn.addEventListener("click", () =>
+    toggleForm(editTaskForm, false)
+  );
 };
 
-const taskCard = (task) => {
+const createTaskCard = (task) => {
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("task-cards");
   if (task.isCompleted) cardContainer.classList.add("task-completed");
@@ -205,6 +225,28 @@ const taskCard = (task) => {
   return cardContainer;
 };
 
+const createTaskListener = () => {
+  const taskForm = document.querySelector(".task-form");
+  taskForm.addEventListener("submit", (e) => {
+    addTask(e);
+    toggleForm(taskForm, false);
+  });
+
+  const title = document.querySelector("#title");
+  const addTaskBtn = document.querySelector(".add-task");
+  addTaskBtn.addEventListener("click", () => {
+    setTimeout(() => title.focus(), 10);
+    toggleForm(taskForm, true);
+  });
+
+  const minimizeBtn = document.querySelector("#btn-form-close");
+  minimizeBtn.addEventListener("click", () => toggleForm(taskForm, false));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") toggleForm(taskForm, false);
+  });
+};
+
 export default function render(taskArray) {
   const main = document.querySelector(".main");
   main.innerHTML = "";
@@ -234,7 +276,7 @@ export default function render(taskArray) {
       });
   }
 
-  filteredTask.forEach((task) => main.append(taskCard(task)));
+  filteredTask.forEach((task) => main.append(createTaskCard(task)));
 }
 
-export { addProjectName, setCurrentTab, toggleElement };
+export { addProjectName, setCurrentTab, toggleElement, createTaskListener };

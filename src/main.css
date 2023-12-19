@@ -286,6 +286,10 @@ header {
   color: var(--black);
 }
 
+.blur-main {
+  filter: blur(5px);
+}
+
 .task-cards {
   height: 300px;
   box-shadow: 0 0 3px var(--black);
