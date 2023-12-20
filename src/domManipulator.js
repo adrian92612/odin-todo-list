@@ -32,14 +32,6 @@ const toggleForm = (form, show) => {
   }
 };
 
-// const toggleElement = (element) => {
-//   if (element.classList.contains("hide-element")) {
-//     element.classList.remove("hide-element");
-//     return;
-//   }
-//   element.classList.add("hide-element");
-// };
-
 function addProjectNameOptions(name) {
   const projName = document.createElement("option");
   projName.innerText = name;
@@ -139,6 +131,8 @@ const taskCardCompleted = (task, card) => {
   task.isCompleted
     ? card.classList.add("task-completed")
     : card.classList.remove("task-completed");
+
+  updateTaskCounter();
 };
 
 const taskEdit = (task) => {
@@ -225,6 +219,23 @@ const createTaskCard = (task) => {
   return cardContainer;
 };
 
+const updateTaskCounter = () => {
+  const completed = document.querySelector(".task-completed-counter");
+  const pending = document.querySelector(".task-pending-counter");
+  let completedCount = 0;
+  let pendingCount = 0;
+
+  const main = document.querySelector(".main");
+  Array.from(main.children).forEach((task) => {
+    task.classList.contains("task-completed")
+      ? completedCount++
+      : pendingCount++;
+  });
+
+  completed.innerText = `${completedCount} Completed`;
+  pending.innerText = `${pendingCount} Pending`;
+};
+
 const sideBarListener = () => {
   const addProjectForm = document.getElementById("add-project");
   addProjectForm.addEventListener("submit", (e) => {
@@ -292,6 +303,7 @@ export default function render(taskArray) {
   }
 
   filteredTask.forEach((task) => main.append(createTaskCard(task)));
+  updateTaskCounter();
 }
 
 export { createTaskListener, sideBarListener };
