@@ -5,20 +5,16 @@
   --paddingFormInput: 0.5rem;
 
   /* colors */
-  --black: #030404;
   --rust: #b7410e;
-  --metallicBrown: #a53c15;
-  --spanishGray: #989898;
   --lightGray: #d3d3d3;
   --darkGray: #726667;
-  --darkGreen: #1f342d;
+  --charcoalGrey: #3c4142;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* font-family: "Alkatra", sans-serif; */
 }
 
 *:focus {
@@ -45,8 +41,30 @@
 header {
   position: relative;
   grid-area: header;
-  border-bottom: 2px solid var(--rust);
-  color: var(--black);
+  /* border-bottom: 2px solid var(--rust); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: var(--lightGray);
+
+  background-color: var(--charcoalGrey);
+}
+
+.add-task {
+  position: absolute;
+  right: 1rem;
+  padding: 0.5rem;
+  font-weight: bolder;
+  border-radius: 15px;
+  background-color: var(--rust);
+  border: none;
+  color: var(--lightGray);
+  transition: 0.3s;
+}
+
+.add-task:hover {
+  transform: scale(1.1);
 }
 
 .task-form {
@@ -177,11 +195,15 @@ header {
 
 .side-bar {
   grid-area: sidebar;
-  background-color: var(--rust);
-  color: var(--black);
+  background-color: var(--charcoalGrey);
   display: none;
   padding: 2rem 0.5rem;
   gap: 0.5rem;
+  border-right: 5px solid var(--rust);
+}
+
+.side-bar * {
+  color: var(--lightGray);
 }
 
 .nav-options {
@@ -194,7 +216,6 @@ header {
 
 .btn-tab,
 .btn-project-tab {
-  color: var(--black);
   border: none;
   background-color: transparent;
   padding: 0.5rem;
@@ -243,11 +264,11 @@ header {
 
 .btn-tab:hover,
 .btn-project-tab:hover {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--rust);
 }
 
 .active-tab {
-  border-bottom: 3px solid var(--black);
+  border-bottom: 3px solid var(--rust);
 }
 
 #add-project {
@@ -390,6 +411,10 @@ footer {
       "sidebar main"
       "sidebar footer";
   }
+  .add-task {
+    right: 3rem;
+  }
+
   .side-bar {
     display: flex;
     flex-direction: column;

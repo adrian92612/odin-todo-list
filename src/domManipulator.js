@@ -32,6 +32,14 @@ const toggleForm = (form, show) => {
   }
 };
 
+// const toggleElement = (element) => {
+//   if (element.classList.contains("hide-element")) {
+//     element.classList.remove("hide-element");
+//     return;
+//   }
+//   element.classList.add("hide-element");
+// };
+
 function addProjectNameOptions(name) {
   const projName = document.createElement("option");
   projName.innerText = name;
@@ -125,14 +133,6 @@ function addProjectName(e) {
   e.target.reset();
 }
 
-const toggleElement = (element) => {
-  if (element.classList.contains("hide-element")) {
-    element.classList.remove("hide-element");
-    return;
-  }
-  element.classList.add("hide-element");
-};
-
 const taskCardCompleted = (task, card) => {
   task.isCompleted = !task.isCompleted;
   updateLocStorArray();
@@ -225,6 +225,21 @@ const createTaskCard = (task) => {
   return cardContainer;
 };
 
+const sideBarListener = () => {
+  const addProjectForm = document.getElementById("add-project");
+  addProjectForm.addEventListener("submit", (e) => {
+    addProjectName(e);
+  });
+
+  const navTabOptions = document.querySelector(".nav-options").children;
+  Array.from(navTabOptions).forEach((tab) => {
+    tab.addEventListener("click", () => {
+      setCurrentTab(tab);
+    });
+  });
+  navTabOptions[1].click();
+};
+
 const createTaskListener = () => {
   const taskForm = document.querySelector(".task-form");
   taskForm.addEventListener("submit", (e) => {
@@ -279,4 +294,4 @@ export default function render(taskArray) {
   filteredTask.forEach((task) => main.append(createTaskCard(task)));
 }
 
-export { addProjectName, setCurrentTab, toggleElement, createTaskListener };
+export { createTaskListener, sideBarListener };

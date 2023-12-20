@@ -12,7 +12,11 @@
   <body>
     <div id="root">
       <header>
-        <div class="current-tab"></div>
+        <div class="tab">
+          <h2 class="current-tab"></h2>
+          <p class="task-completed-counter">Completed</p>
+          <p class="task-pending-counter">Pending</p>
+        </div>
         <button class="add-task">Create a task</button>
 
         <form action="#" class="task-form hide-element">
@@ -33,9 +37,9 @@
           <input type="date" id="date" required />
           <select id="priority-list" required>
             <option value="" selected disabled>Priority?</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
           <button id="btn-add-task" type="submit">
             <i class="fa fa-plus-square fa-lg"></i>
@@ -53,9 +57,9 @@
           <input type="date" id="edit-date" required />
           <select id="edit-priority" required>
             <option value="" selected disabled>Priority?</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
           <div>
             <button id="edit-discard" type="button">

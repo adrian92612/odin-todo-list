@@ -1,27 +1,6 @@
 import "./main.css";
 import { mergeTaskArray } from "./taskHandler";
-import {
-  addProjectName,
-  createTaskListener,
-  setCurrentTab,
-} from "./domManipulator";
-
-const addProjectListener = () => {
-  const addProjectForm = document.getElementById("add-project");
-  addProjectForm.addEventListener("submit", (e) => {
-    addProjectName(e);
-  });
-};
-
-const tabListener = () => {
-  const navTabOptions = document.querySelector(".nav-options").children;
-  Array.from(navTabOptions).forEach((tab) => {
-    tab.addEventListener("click", () => {
-      setCurrentTab(tab);
-    });
-  });
-  navTabOptions[1].click();
-};
+import { createTaskListener, sideBarListener } from "./domManipulator";
 
 const addExistingProjects = () => {
   const projects = JSON.parse(localStorage.getItem("projArray"));
@@ -37,10 +16,7 @@ const addExistingProjects = () => {
 };
 
 (function init() {
-  // taskFormListener();
-  addProjectListener();
-  tabListener();
-  // addTaskListener();
+  sideBarListener();
   createTaskListener();
 
   if (localStorage.length > 0) {

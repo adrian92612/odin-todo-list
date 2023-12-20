@@ -1,4 +1,4 @@
-import render, { toggleElement } from "./domManipulator";
+import render from "./domManipulator";
 
 const mainTaskArray = [];
 
@@ -106,7 +106,6 @@ export default function addTask(e) {
     return;
   }
 
-  toggleElement(e.target);
   mainTaskArray.push(task);
   task.mainIndex = mainTaskArray.indexOf(task);
   updateLocStorArray();
