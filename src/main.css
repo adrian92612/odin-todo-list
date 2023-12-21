@@ -35,6 +35,8 @@ body {
     "main"
     "footer";
   max-width: 1200px;
+  position: relative;
+  width: 100%;
   min-height: 100svh;
   margin: 0 auto;
 
@@ -46,10 +48,10 @@ body {
 header {
   position: relative;
   grid-area: header;
-  /* border-bottom: 2px solid var(--rust); */
-  display: flex;
+  border-bottom: 2px solid var(--rust);
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   padding: 1rem;
   color: var(--lightGray);
   background-color: var(--charcoalGrey);
@@ -61,6 +63,13 @@ header {
   background-color: transparent;
   font-size: 2rem;
   transition: 0.3s;
+}
+
+.tab {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .current-tab {
@@ -77,6 +86,11 @@ header {
   border: none;
   color: var(--lightGray);
   transition: 0.3s;
+
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .add-task:hover,
@@ -212,12 +226,33 @@ header {
 /********** SIDEBAR **********/
 
 .side-bar {
-  grid-area: sidebar;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: var(--sideBarWidth);
+  left: -250px;
   background-color: var(--charcoalGrey);
-  display: none;
   padding: 2rem 1rem;
   gap: 0.5rem;
   border-right: 5px solid var(--rust);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.show-side-bar {
+  opacity: 1;
+  z-index: 1;
+  left: 0;
+}
+
+.btn-hide-side-bar {
+  align-self: flex-end;
+  width: 25px;
+  color: var(--rust);
+  font-size: 1.2rem;
+  border: none;
+  background-color: transparent;
 }
 
 .side-bar > h2 {
@@ -462,8 +497,14 @@ footer {
   }
 
   .side-bar {
-    display: flex;
-    flex-direction: column;
+    grid-area: sidebar;
+    left: 0;
+    opacity: 1;
+  }
+
+  .btn-hide-side-bar,
+  .btn-side-bar {
+    display: none;
   }
 }
 

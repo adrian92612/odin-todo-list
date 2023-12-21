@@ -249,6 +249,16 @@ const sideBarListener = () => {
     });
   });
   navTabOptions[1].click();
+
+  const sideBar = document.querySelector(".side-bar");
+  const hideSideBar = document.querySelector(".btn-hide-side-bar");
+  hideSideBar.addEventListener("click", () =>
+    sideBar.classList.remove("show-side-bar")
+  );
+  const showSideBar = document.querySelector(".btn-side-bar");
+  showSideBar.addEventListener("click", () =>
+    sideBar.classList.add("show-side-bar")
+  );
 };
 
 const createTaskListener = () => {
