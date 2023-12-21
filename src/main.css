@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
 
 :root {
-  --sideBarWidth: 250px;
+  --sideBarWidth: 225px;
   --paddingFormInput: 0.5rem;
 
   /* colors */
@@ -10,6 +10,10 @@
   --lightGray: #d3d3d3;
   --darkGray: #726667;
   --charcoalGrey: #3c4142;
+}
+
+body {
+  background-color: var(--lightGray);
 }
 
 * {
@@ -45,16 +49,27 @@ header {
   /* border-bottom: 2px solid var(--rust); */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem;
   color: var(--lightGray);
-
   background-color: var(--charcoalGrey);
 }
 
+.btn-side-bar {
+  border: none;
+  color: var(--rust);
+  background-color: transparent;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.current-tab {
+  border-bottom: 2px solid var(--rust);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
 .add-task {
-  position: absolute;
-  right: 1rem;
   padding: 0.5rem;
   font-weight: bolder;
   border-radius: 15px;
@@ -64,7 +79,8 @@ header {
   transition: 0.3s;
 }
 
-.add-task:hover {
+.add-task:hover,
+.btn-side-bar:hover {
   transform: scale(1.1);
 }
 
@@ -78,6 +94,7 @@ header {
   width: 350px;
   height: 400px;
   z-index: 1;
+  transition: 0.3s;
 
   padding: 1rem;
   border: 2px solid var(--black);
@@ -198,19 +215,22 @@ header {
   grid-area: sidebar;
   background-color: var(--charcoalGrey);
   display: none;
-  padding: 2rem 0.5rem;
+  padding: 2rem 1rem;
   gap: 0.5rem;
   border-right: 5px solid var(--rust);
 }
 
-.side-bar * {
-  color: var(--lightGray);
+.side-bar > h2 {
+  color: var(--rust);
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
 }
 
 .nav-options {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: end;
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
@@ -220,11 +240,13 @@ header {
   border: none;
   background-color: transparent;
   padding: 0.5rem;
+  font-size: 1rem;
   font-weight: bolder;
   letter-spacing: 0.2rem;
   text-align: center;
   text-decoration: none;
   transition: 0.2s;
+  color: var(--lightGray);
 }
 
 .proj-container {
@@ -237,10 +259,24 @@ header {
   position: absolute;
   right: -5%;
   display: flex;
+  align-items: center;
   gap: 0.3rem;
-  background-color: red;
+  background-color: var(--rust);
   border-radius: 20px;
   padding: 0.3rem 0.6rem;
+  color: var(--lightGray);
+}
+
+.delete-container > button {
+  border: none;
+  background-color: var(--rust);
+  border: 1px solid var(--lightGray);
+  box-shadow: 0 1px 1px var(--charcoalGrey);
+  font-size: 0.7rem;
+  border-radius: 10px;
+  width: 30px;
+  height: 15px;
+  color: var(--lightGray);
 }
 
 .btn-project-tab {
@@ -253,8 +289,9 @@ header {
 
 .btn-trash {
   flex-shrink: 0;
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   background-color: transparent;
+  color: var(--rust);
   border: none;
   transition: 0.2s;
 }
@@ -274,17 +311,25 @@ header {
 
 #add-project {
   display: flex;
+  gap: 5px;
 }
 
 #add-project > input {
   min-width: 0;
-  padding: 0.3rem;
+  padding: 0.3rem 1rem;
+  border: 3px solid var(--rust);
+  background-color: transparent;
+  border-radius: 15px;
+  color: var(--lightGray);
+  flex-grow: 1;
 }
 
 #add-project > button {
-  width: 25%;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 5px;
+  color: var(--rust);
+  background-color: transparent;
+  border: none;
 }
 
 .project-list {
@@ -302,7 +347,7 @@ header {
   display: grid;
   align-self: start;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, 275px);
   gap: 1rem;
   padding: 1rem;
   color: var(--black);
